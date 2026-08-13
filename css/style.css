@@ -222,7 +222,7 @@ section { padding: 100px 0; }
 
 /* ---------- About ---------- */
 .about-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
@@ -341,6 +341,7 @@ section { padding: 100px 0; }
 .concert-poster, .person-card img, .conductor-layout img, .hero-logo { cursor: zoom-in; }
 
 @media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; }
   .concert-card { grid-template-columns: 1fr; }
   .concert-poster { height: auto; max-height: none; }
 }
