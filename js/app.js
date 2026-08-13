@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     <section class="hero" id="hero">
       <div class="hero-content">
         <img class="hero-logo" src="${data.site.heroLogoPath}" alt="${data.site.name}">
-        <div class="hero-badge"><span>🎮</span> Registered <a href="${data.site.charityUrl}" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Charity No. ${data.site.charityNo}</a></div>
         <h1><span class="accent">L</span>ondon <span class="accent">V</span>ideo <span class="accent">G</span>ame <span class="accent">O</span>rchestra</h1>
         <p class="hero-subtitle">${data.hero.subtitle}</p>
         <div class="hero-actions">
