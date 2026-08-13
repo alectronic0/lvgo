@@ -1,0 +1,72 @@
+name: Deploy and Minify Site
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Prerender HTML
+        run: |
+          npm install puppeteer
+          node scripts/prerender.js
+
+      - name: Install Minifiers
+        run: npm install -g terser clean-css-cli
+
+      - name: Minify JS and CSS
+        run: |
+          find . -type f -name "*.js" ! -name "*.min.js" ! -path "*/node_modules/*" -exec sh -c 'terser "$1" -c -m -o "$1"' _ {} \;
+          find . -type f -name "*.css" ! -name "*.min.css" ! -path "*/node_modules/*" -exec sh -c 'cleancss -o "$1" "$1"' _ {} \;
+
+      - name: Update Sitemap Date
+        run: |
+          if [ -f "sitemap.xml" ]; then
+            TODAY=$(date -u +%Y-%m-%d)
+            sed -i "s|<lastmod>.*</lastmod>|<lastmod>${TODAY}</lastmod>|g" sitemap.xml
+          fi
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        continue-on-error: true
+        with:
+          staticDistDir: ./
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
