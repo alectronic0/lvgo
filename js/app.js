@@ -63,12 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
     </section>
   `;
 
-  const renderConcerts = (showAll = false) => {
+  const renderConcerts = () => {
     const hasUpcoming = data.concerts.list.some(c => c.status === 'upcoming');
-    const upcoming = data.concerts.list.filter(c => c.status === 'upcoming');
     const past = data.concerts.list.filter(c => c.status === 'past');
-    const displayList = showAll ? data.concerts.list : [...upcoming, ...past.slice(0, 3)];
-
     
     return `
       <section id="concerts" class="fade-in">
@@ -87,8 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
             ` : ''}
 
-            ${displayList.map(c => `
-              <div class="concert-card ${c.status === 'upcoming' ? 'upcoming' : ''} ${c.isLandscape ? 'landscape-card' : ''}" ${c.status === 'upcoming' ? 'style="position:relative;"' : ''}>
+            ${data.concerts.list.map(c => {
+              const isHiddenPast = c.status === 'past' && past.indexOf(c) >= 3;
+              const extraStyles = [];
+              if (c.status === 'upcoming') extraStyles.push('position:relative;');
+              if (isHiddenPast) extraStyles.push('display:none;');
+              return `
+              <div class="concert-card ${c.status === 'upcoming' ? 'upcoming' : ''} ${c.isLandscape ? 'landscape-card' : ''} ${isHiddenPast ? 'past-hidden' : ''}" style="${extraStyles.join(' ')}">
                 ${c.poster 
                   ? `<img class="concert-poster" src="${c.poster}" alt="${c.title} concert poster" loading="lazy">` 
                   : `<div class="concert-poster-placeholder"><img src="${data.site.logoPath}" alt="LVGO Logo"></div>`
@@ -114,12 +116,12 @@ document.addEventListener('DOMContentLoaded', () => {
                   ${c.soundcloudEmbed ? `<div class="concert-embed">${c.soundcloudEmbed}</div>` : ''}
                 </div>
               </div>
-            `).join('')}
+            `}).join('')}
           </div>
 
-          ${!showAll && past.length > 3 ? `
+          ${past.length > 3 ? `
             <div style="text-align: center; margin-top: 48px;">
-              <a href="concerts.html" class="btn btn-secondary">View Full History</a>
+              <button id="expand-history-btn" class="btn btn-secondary">Show all past concerts</button>
             </div>
           ` : ''}
         </div>
@@ -421,22 +423,36 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (page === 'home') {
-    main.innerHTML = renderHero() + renderAbout() + renderConcerts(false) + renderPeople() + renderMedia() + renderFriends() + renderConnect();
+    main.innerHTML = renderHero() + renderAbout() + renderConcerts() + renderPeople() + renderMedia() + renderFriends() + renderConnect();
 
     // Mobile nav toggle
     const toggle = document.querySelector('.nav-toggle');
     const links = document.querySelector('.nav-links');
     if (toggle && links) {
       toggle.addEventListener('click', () => {
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', !isExpanded);
         toggle.classList.toggle('active');
-        links.classList.toggle('open');
+        links.classList.toggle('active');
       });
-
-      links.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          toggle.setAttribute('aria-expanded', 'false');
           toggle.classList.remove('active');
-          links.classList.remove('open');
+          links.classList.remove('active');
         });
+      });
+    }
+
+    const expandBtn = document.getElementById('expand-history-btn');
+    if (expandBtn) {
+      expandBtn.addEventListener('click', () => {
+        document.querySelectorAll('.concert-card.past-hidden').forEach(card => {
+          card.style.display = '';
+          // Trigger fade in for newly visible items if they are in viewport
+          observer.observe(card);
+        });
+        expandBtn.parentElement.style.display = 'none';
       });
     }
 
@@ -458,28 +474,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   else if (page === 'join-us') {
     main.innerHTML = renderJoinUs();
-  }
-  else if (page === 'concerts-history') {
-    main.innerHTML = renderHeader() + '<div style="height: 60px;"></div>' + renderConcerts(true) + renderConnect();
-    
-    // Add event listeners for mobile nav toggle since we included renderHeader()
-    const toggle = document.querySelector('.nav-toggle');
-    const links = document.querySelector('.nav-links');
-    if (toggle && links) {
-      toggle.addEventListener('click', () => {
-        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', !isExpanded);
-        toggle.classList.toggle('active');
-        links.classList.toggle('active');
-      });
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.classList.remove('active');
-          links.classList.remove('active');
-        });
-      });
-    }
   }
   else if (page === '404') {
     main.innerHTML = renderNotFound();
