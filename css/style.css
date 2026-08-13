@@ -14,10 +14,10 @@
   --surface: #161616;
   --border: #222222;
   --text: #f0f0f0;
-  --text-muted: #999999;
-  --accent: #c850c0;
-  --accent-hover: #e060d8;
-  --accent-glow: rgba(200, 80, 192, 0.15);
+  --text-muted: #aaaaaa;
+  --accent: #b42eb0;
+  --accent-hover: #9c2098;
+  --accent-glow: rgba(180, 46, 176, 0.15);
   --white: #ffffff;
   --font-heading: 'Anton', sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
@@ -569,6 +569,7 @@ section { padding: 100px 0; }
   position: fixed; bottom: 20px; left: 20px; z-index: 999;
   width: 44px; height: 44px; border-radius: 50%;
   background: var(--surface); border: 1px solid var(--border);
+  color: var(--white);
   font-size: 1.2rem; cursor: pointer;
   transition: all var(--transition);
   display: flex; align-items: center; justify-content: center;

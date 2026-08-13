@@ -180,7 +180,7 @@ window.CONTENT = {
         venue: "Woolwich Works",
         mapUrl: "https://www.google.com/maps/search/?api=1&query=Woolwich+Works",
         programmeUrl: "assets/programmes/LVGO-SoH-Programme-19-November-2022.pdf",
-        soundcloudEmbed: '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1481859253&color=%23c850c0&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'
+        soundcloudEmbed: '<iframe title="SoundCloud Audio Player" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1481859253&color=%23c850c0&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'
       },
       {
         title: "Remastered (Now With Bonus Content)",
@@ -195,7 +195,7 @@ window.CONTENT = {
         mapUrl: "https://www.google.com/maps/search/?api=1&query=Woolwich+Works",
         infoUrl: "https://www.woolwich.works/events/london-video-game-orchestra-remastered-now-with-bonus-content",
         programmeUrl: "assets/programmes/LVGO-Remastered-11.06.2022.pdf",
-        soundcloudEmbed: '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1335809995&color=%23c850c0&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'
+        soundcloudEmbed: '<iframe title="SoundCloud Audio Player" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1335809995&color=%23c850c0&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'
       }
     ]
   },

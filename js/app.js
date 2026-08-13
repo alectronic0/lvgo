@@ -302,8 +302,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="footer-charity">
           <p>${data.site.name} is a registered charity in England &amp; Wales · <a href="${data.site.charityUrl}" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Charity No. ${data.site.charityNo}</a></p>
           <p style="margin-top: 8px;">
-            <a href="/arrangements.html" style="color: inherit; text-decoration: underline;">Arrangements</a> | 
-            <a href="/policies.html" style="color: inherit; text-decoration: underline;">Policies</a>
+            <a href="arrangements.html" style="color: inherit; text-decoration: underline;">Arrangements</a> | 
+            <a href="policies.html" style="color: inherit; text-decoration: underline;">Policies</a>
           </p>
           <p style="margin-top: 8px;">© <span class="year"></span> ${data.site.name}. All rights reserved.</p>
         </div>
