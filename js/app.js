@@ -64,8 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
     </section>
   `;
 
-  const renderConcerts = () => {
+  const renderConcerts = (showAll = false) => {
     const hasUpcoming = data.concerts.list.some(c => c.status === 'upcoming');
+    const upcoming = data.concerts.list.filter(c => c.status === 'upcoming');
+    const past = data.concerts.list.filter(c => c.status === 'past');
+    const displayList = showAll ? data.concerts.list : [...upcoming, ...past.slice(0, 3)];
+
     
     return `
       <section id="concerts" class="fade-in">
@@ -84,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
             ` : ''}
 
-            ${data.concerts.list.map(c => `
+            ${displayList.map(c => `
               <div class="concert-card ${c.status === 'upcoming' ? 'upcoming' : ''} ${c.isLandscape ? 'landscape-card' : ''}" ${c.status === 'upcoming' ? 'style="position:relative;"' : ''}>
                 ${c.poster 
                   ? `<img class="concert-poster" src="${c.poster}" alt="${c.title} concert poster" loading="lazy">` 
@@ -113,6 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
             `).join('')}
           </div>
+
+          ${!showAll && past.length > 3 ? `
+            <div style="text-align: center; margin-top: 48px;">
+              <a href="concerts.html" class="btn btn-secondary">View Full History</a>
+            </div>
+          ` : ''}
         </div>
       </section>
     `;
@@ -412,7 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (page === 'home') {
-    main.innerHTML = renderHero() + renderAbout() + renderConcerts() + renderPeople() + renderMedia() + renderFriends() + renderConnect();
+    main.innerHTML = renderHero() + renderAbout() + renderConcerts(false) + renderPeople() + renderMedia() + renderFriends() + renderConnect();
 
     // Mobile nav toggle
     const toggle = document.querySelector('.nav-toggle');
@@ -449,6 +459,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   else if (page === 'join-us') {
     main.innerHTML = renderJoinUs();
+  }
+  else if (page === 'concerts-history') {
+    main.innerHTML = renderHeader() + '<div style="height: 60px;"></div>' + renderConcerts(true) + renderConnect();
+    
+    // Add event listeners for mobile nav toggle since we included renderHeader()
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', () => {
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', !isExpanded);
+        toggle.classList.toggle('active');
+        links.classList.toggle('active');
+      });
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.classList.remove('active');
+          links.classList.remove('active');
+        });
+      });
+    }
   }
   else if (page === '404') {
     main.innerHTML = renderNotFound();
