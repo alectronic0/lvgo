@@ -380,9 +380,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <h1>404</h1>
         <h2 id="title">Game Over</h2>
         <p id="message">The page you're looking for has been moved or doesn't exist.</p>
-        <img id="gif" src="" alt="404" loading="lazy">
         <div style="margin-top: 32px;">
-          <a class="btn btn-primary" href="/">Return Home</a>
+          <a class="btn btn-primary" href="./index.html">Return Home</a>
         </div>
       </div>
     </section>
@@ -483,11 +482,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const random = notFoundData[Math.floor(Math.random() * notFoundData.length)];
       const titleEl = document.getElementById('title');
       const msgEl = document.getElementById('message');
-      const gifEl = document.getElementById('gif');
       
       if (titleEl) titleEl.textContent = random.title;
       if (msgEl) msgEl.textContent = random.message;
-      if (gifEl) gifEl.src = random.gif;
     }
   }
 });
