@@ -396,9 +396,15 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
 
   // --- Injection ---
-  document.body.insertAdjacentHTML('afterbegin', renderHeader());
-  document.body.insertAdjacentHTML('beforeend', renderFooter());
-  document.body.insertAdjacentHTML('beforeend', renderLightbox());
+  if (!document.querySelector('.site-nav')) {
+    document.body.insertAdjacentHTML('afterbegin', renderHeader());
+  }
+  if (!document.querySelector('.site-footer')) {
+    document.body.insertAdjacentHTML('beforeend', renderFooter());
+  }
+  if (!document.querySelector('#lightbox')) {
+    document.body.insertAdjacentHTML('beforeend', renderLightbox());
+  }
 
   // Lightbox functionality
   const lightbox = document.getElementById('lightbox');
