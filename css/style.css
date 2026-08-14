@@ -141,7 +141,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .hero::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(200, 80, 192, 0.2) 0%, rgba(10, 10, 10, 0.8) 70%);
+  background: radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.88) 80%);
   pointer-events: none;
 }
 
@@ -162,13 +162,17 @@ img { max-width: 100%; height: auto; display: block; }
   font-family: var(--font-heading); font-size: clamp(3rem, 8vw, 6rem);
   color: var(--white); line-height: 1.05; letter-spacing: 0.02em;
   margin-bottom: 24px;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9);
 }
 
 .hero h1 .accent { color: var(--accent); }
 
 .hero-subtitle {
-  font-size: 1.15rem; color: var(--text-muted); max-width: 680px;
-  margin: 0 auto 32px; line-height: 1.7; text-wrap: balance;
+  font-size: 1.2rem; font-weight: 400;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 680px; margin: 0 auto 32px; line-height: 1.7;
+  text-wrap: balance;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 .hero-badge {
