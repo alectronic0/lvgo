@@ -839,9 +839,9 @@ section {
   border-radius: 0;
   overflow: hidden;
   background: #111111;
-  margin-bottom: 8px;
   border: none;
   border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .person-card img {
@@ -857,40 +857,32 @@ section {
   transform: scale(1.04);
 }
 
+.person-card-body {
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-grow: 1;
+  min-height: 48px;
+  width: 100%;
+}
+
 .person-name {
   font-weight: 600;
   font-size: 0.88rem;
   color: var(--white);
   line-height: 1.25;
-  padding: 0 8px;
-  margin-top: 6px;
-  margin-bottom: 8px;
+  margin: 0;
+  padding: 0;
 }
 
 .person-role {
   font-size: 0.76rem;
   color: var(--accent);
-  margin-top: -4px;
-  margin-bottom: 8px;
-  padding: 0 8px;
-}
-
-.person-instruments {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 3px;
-  margin-top: 6px;
-  padding: 0 8px;
-}
-
-.instrument-chip {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-  padding: 1px 6px;
-  border-radius: 100px;
-  font-size: 0.7rem;
+  margin: 0;
+  padding: 0;
   line-height: 1.2;
 }
 

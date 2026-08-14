@@ -249,8 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="person-card-img-wrapper">
         <img src="${person.image}" alt="${person.name}" loading="lazy" width="500" height="500">
       </div>
-      <h4 class="person-name">${person.name}</h4>
-      ${person.role ? `<div class="person-role">${person.role}</div>` : ''}
+      <div class="person-card-body">
+        <h4 class="person-name">${person.name}</h4>
+        ${person.role ? `<div class="person-role">${person.role}</div>` : ''}
+      </div>
       <div class="person-social-row">
         ${renderPersonSocialIcons(person, 14)}
       </div>
