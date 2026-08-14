@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
 
       <div style="position: relative; width: 100%; height: 1280px; background: #fff; border-radius: 12px; overflow: hidden;">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeQyCmpBdJp3w6dMUzDD8pEgnBQO9gDcQQu0KWzL6jh1155bw/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeQyCmpBdJp3w6dMUzDD8pEgnBQO9gDcQQu0KWzL6jh1155bw/viewform?embedded=true" title="Submit an Arrangement Form" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
       </div>
     </section>
   `;
@@ -388,14 +388,18 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
 
   const renderLightbox = () => `
-    <dialog id="lightbox" class="lightbox">
+    <dialog id="lightbox" class="lightbox" aria-label="Image Preview">
       <figure class="lightbox-figure">
+        <button class="lightbox-close" aria-label="Close image preview" type="button">&times;</button>
         <img id="lightbox-img" src="" alt="Expanded Image">
       </figure>
     </dialog>
   `;
 
   // --- Injection ---
+  if (!document.querySelector('.skip-link')) {
+    document.body.insertAdjacentHTML('afterbegin', '<a href="#main-content" class="skip-link">Skip to main content</a>');
+  }
   if (!document.querySelector('.site-nav')) {
     document.body.insertAdjacentHTML('afterbegin', renderHeader());
   }
@@ -414,12 +418,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.addEventListener('click', (e) => {
       if (e.target.matches('.concert-poster, .person-card img, .conductor-layout img, .hero-logo')) {
         lightboxImg.src = e.target.currentSrc || e.target.src;
-        lightboxImg.alt = e.target.alt;
+        lightboxImg.alt = e.target.alt || 'Expanded Preview';
         lightbox.showModal();
       }
     });
-    lightbox.addEventListener('click', () => {
-      lightbox.close();
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.matches('.lightbox-close, .lightbox-close *')) {
+        lightbox.close();
+      }
     });
   }
 
