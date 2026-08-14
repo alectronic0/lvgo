@@ -892,12 +892,14 @@ section {
 }
 
 .person-social-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px 6px;
+  justify-items: center;
   align-items: center;
-  justify-content: center;
-  gap: 4px;
   margin-top: auto;
-  padding: 8px 8px 0 8px;
+  padding: 8px 10px 0;
+  width: 100%;
 }
 
 .person-social-icon {
