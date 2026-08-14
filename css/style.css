@@ -674,51 +674,72 @@ section {
   padding: 0;
   border: none;
   background: transparent;
-  max-width: 100vw;
-  max-height: 100vh;
+  max-width: 95vw;
+  max-height: 95vh;
   margin: auto;
+  overflow: visible;
+  outline: none;
+}
+
+.lightbox:focus-visible {
+  outline: none;
 }
 
 .lightbox::backdrop {
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(4px);
   cursor: zoom-out;
 }
 
 .lightbox-figure {
   margin: 0;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
 }
 
 .lightbox-figure img {
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: min(90vw, 1000px);
+  max-height: min(85vh, 850px);
+  width: auto;
+  height: auto;
   display: block;
   border-radius: var(--radius);
   object-fit: contain;
   cursor: zoom-out;
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .lightbox-close {
   position: absolute;
-  top: -16px;
-  right: -16px;
+  top: 12px;
+  right: 12px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--surface);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
   color: var(--white);
-  border: 1px solid var(--border);
-  font-size: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 1.3rem;
+  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background var(--transition);
+  transition: all var(--transition);
   z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .lightbox-close:hover {
-  background: #333333;
+  background: var(--color-l);
+  border-color: var(--color-l);
+  transform: scale(1.08);
 }
 
 .concert-poster,
