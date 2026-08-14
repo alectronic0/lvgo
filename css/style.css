@@ -810,7 +810,7 @@ section {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  padding: 10px 8px;
+  padding: 0 0 10px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -818,6 +818,7 @@ section {
   cursor: pointer;
   transition: all var(--transition);
   outline: none;
+  overflow: hidden;
 }
 
 .person-card:hover {
@@ -835,11 +836,12 @@ section {
 .person-card-img-wrapper {
   width: 100%;
   aspect-ratio: 1;
-  border-radius: 6px;
+  border-radius: 0;
   overflow: hidden;
   background: #111111;
   margin-bottom: 8px;
-  border: 1px solid var(--border);
+  border: none;
+  border-bottom: 1px solid var(--border);
 }
 
 .person-card img {
@@ -860,12 +862,14 @@ section {
   font-size: 0.88rem;
   color: var(--white);
   line-height: 1.25;
+  padding: 0 8px;
 }
 
 .person-role {
   font-size: 0.76rem;
   color: var(--accent);
   margin-top: 2px;
+  padding: 0 8px;
 }
 
 .person-instruments {
@@ -874,6 +878,7 @@ section {
   justify-content: center;
   gap: 3px;
   margin-top: 6px;
+  padding: 0 8px;
 }
 
 .instrument-chip {
@@ -892,7 +897,7 @@ section {
   justify-content: center;
   gap: 4px;
   margin-top: auto;
-  padding-top: 8px;
+  padding: 8px 8px 0 8px;
 }
 
 .person-social-icon {
