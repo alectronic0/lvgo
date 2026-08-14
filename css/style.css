@@ -864,13 +864,14 @@ section {
   line-height: 1.25;
   padding: 0 8px;
   margin-top: 6px;
+  margin-bottom: 8px;
 }
 
 .person-role {
   font-size: 0.76rem;
   color: var(--accent);
-  margin-top: 2px;
-  margin-bottom: 6px;
+  margin-top: -4px;
+  margin-bottom: 8px;
   padding: 0 8px;
 }
 
