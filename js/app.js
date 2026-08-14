@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ${data.hero.actions
             .map(
               (action) => `
-            <a class="btn ${action.primary ? 'btn-primary' : 'btn-secondary'}" href="${action.url}" ${action.external ? 'target="_blank" rel="noopener"' : ''}>${action.label}</a>
+            <a class="btn ${action.primary ? 'btn-primary' : 'btn-secondary'}" href="${action.url}" ${action.external ? 'target="_blank" rel="noopener noreferrer"' : ''}>${action.label}</a>
           `
             )
             .join('')}
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="concert-cta">
                 <h3>No upcoming concerts at the moment!</h3>
                 <p>Join our mailing list to be the first to hear about future performances.</p>
-                <a class="btn btn-primary" href="${data.hero.actions.find((a) => a.label.includes('Join Mailing List')).url}" target="_blank" rel="noopener">Subscribe for updates</a>
+                <a class="btn btn-primary" href="${data.hero.actions.find((a) => a.label.includes('Join Mailing List')).url}" target="_blank" rel="noopener noreferrer">Subscribe for updates</a>
               </div>
             `
                 : ''
@@ -117,14 +117,14 @@ document.addEventListener('DOMContentLoaded', () => {
                   <div class="concert-meta">
                     <span>📅 ${c.status === 'upcoming' ? `<strong>${c.date}</strong>` : c.date}${c.time ? ` &nbsp; 🕖 ${c.status === 'upcoming' ? `<strong>${c.time}</strong>` : c.time}` : ''}</span>
                     <span>📍 ${c.status === 'upcoming' ? `<strong>${c.venue}</strong>` : c.venue} 
-                      ${c.mapUrl ? `<a href="${c.mapUrl}" class="map-link" target="_blank" rel="noopener">(View on map)</a>` : ''}
+                      ${c.mapUrl ? `<a href="${c.mapUrl}" class="map-link" target="_blank" rel="noopener noreferrer">(View on map)</a>` : ''}
                     </span>
                   </div>
 
                   <div class="concert-actions">
-                    ${c.infoUrl ? `<a class="btn btn-primary" href="${c.infoUrl}" target="_blank" rel="noopener">🔗 Event Info</a>` : ''}
-                    ${c.status === 'upcoming' && c.ticketUrl ? `<a class="btn btn-primary" href="${c.ticketUrl}" target="_blank" rel="noopener">Get Tickets</a>` : ''}
-                    ${c.programmeUrl ? `<a class="btn btn-secondary" href="${c.programmeUrl}" target="_blank" rel="noopener">📄 Download Programme</a>` : ''}
+                    ${c.infoUrl ? `<a class="btn btn-primary" href="${c.infoUrl}" target="_blank" rel="noopener noreferrer">🔗 Event Info</a>` : ''}
+                    ${c.status === 'upcoming' && c.ticketUrl ? `<a class="btn btn-primary" href="${c.ticketUrl}" target="_blank" rel="noopener noreferrer">Get Tickets</a>` : ''}
+                    ${c.programmeUrl ? `<a class="btn btn-secondary" href="${c.programmeUrl}" target="_blank" rel="noopener noreferrer">📄 Download Programme</a>` : ''}
                   </div>
 
                   ${c.soundcloudEmbed ? `<div class="concert-embed">${c.soundcloudEmbed}</div>` : ''}
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         person.links && person.links.length > 0
           ? `
         <div class="person-links">
-          ${person.links.map((l) => `<a href="${l.url}" target="_blank" rel="noopener" aria-label="${l.icon}">${getSocialIcon(l.icon)}</a>`).join('')}
+          ${person.links.map((l) => `<a href="${l.url}" target="_blank" rel="noopener noreferrer" aria-label="${l.icon}">${getSocialIcon(l.icon)}</a>`).join('')}
         </div>
       `
           : ''
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 data.people.conductor.links && data.people.conductor.links.length > 0
                   ? `
                 <div class="person-links" style="margin-top: 16px;">
-                  ${data.people.conductor.links.map((l) => `<a href="${l.url}" target="_blank" rel="noopener" aria-label="${l.icon}">${getSocialIcon(l.icon)}</a>`).join('')}
+                  ${data.people.conductor.links.map((l) => `<a href="${l.url}" target="_blank" rel="noopener noreferrer" aria-label="${l.icon}">${getSocialIcon(l.icon)}</a>`).join('')}
                 </div>
               `
                   : ''
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .filter((s) => ['youtube', 'flickr', 'soundcloud'].includes(s.name.toLowerCase()))
             .map(
               (s) => `
-            <a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.name}" class="platform-link" style="color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; transition: color var(--transition);">
+            <a href="${s.url}" target="_blank" rel="noopener noreferrer" aria-label="${s.name}" class="platform-link" style="color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; transition: color var(--transition);">
               <div style="background: var(--surface); padding: 16px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; transition: border-color var(--transition);">
                 ${getSocialIcon(s.name, 28)}
               </div>
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .map(
               (video) => `
             <div class="video-embed">
-              <iframe src="${video.url}" title="${video.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              <iframe src="${video.url}" title="${video.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           `
             )
@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ${data.media.press
             .map(
               (item) => `
-            <a class="media-card" href="${item.url}" target="_blank" rel="noopener">
+            <a class="media-card" href="${item.url}" target="_blank" rel="noopener noreferrer">
               <h4>${item.title}</h4>
               <div class="media-source">${item.source} — ${item.date}</div>
             </a>
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ${data.friends
             .map(
               (friend) => `
-            <a class="friend-card" href="${friend.url}" target="_blank" rel="noopener">
+            <a class="friend-card" href="${friend.url}" target="_blank" rel="noopener noreferrer">
               <h3>${friend.icon} ${friend.name}</h3>
               <p>${friend.desc}</p>
               <span class="friend-link">${friend.link} →</span>
@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ${data.connect
             .map(
               (item) => `
-            <a class="connect-card" href="${item.url}" ${!item.url.startsWith('mailto:') ? 'target="_blank" rel="noopener"' : ''}>
+            <a class="connect-card" href="${item.url}" ${!item.url.startsWith('mailto:') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
               <div class="connect-icon">${item.icon}</div>
               <h3>${item.title}</h3>
               <p>${item.desc}</p>
@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .map(
               (s) => `
             <li>
-              <a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.name}">
+              <a href="${s.url}" target="_blank" rel="noopener noreferrer" aria-label="${s.name}">
                 <svg viewBox="${s.viewBox}"><path d="${s.iconPath}"/></svg>
               </a>
             </li>
@@ -357,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>${data.site.rehearsals}</p>
         </div>
         <div class="footer-charity">
-          <p>${data.site.name} is a registered charity in England &amp; Wales · <a href="${data.site.charityUrl}" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Charity No. ${data.site.charityNo}</a></p>
+          <p>${data.site.name} is a registered charity in England &amp; Wales · <a href="${data.site.charityUrl}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Charity No. ${data.site.charityNo}</a></p>
           <p style="margin-top: 8px;">
             <a href="arrangements.html" style="color: inherit; text-decoration: underline;">Arrangements</a> | 
             <a href="policies.html" style="color: inherit; text-decoration: underline;">Policies</a>
