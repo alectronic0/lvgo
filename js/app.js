@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="nav-inner">
         <a class="nav-logo" href="#hero">
           <img src="${data.site.logoPath}" alt="${data.site.shortName} Logo" width="44" height="44">
-          <span class="nav-logo-text">${data.site.shortName}</span>
+          <span class="nav-logo-text"><span class="color-l">L</span><span class="color-v">V</span><span class="color-g">G</span><span class="color-o">O</span></span>
         </a>
         <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <section class="hero" id="hero">
       <div class="hero-content">
         <img class="hero-logo" src="${data.site.heroLogoPath}" alt="${data.site.name}">
-        <h1><span class="accent">L</span>ondon <span class="accent">V</span>ideo <span class="accent">G</span>ame <span class="accent">O</span>rchestra</h1>
+        <h1><span class="color-l">L</span>ondon <span class="color-v">V</span>ideo <span class="color-g">G</span>ame <span class="color-o">O</span>rchestra</h1>
         <p class="hero-subtitle">${data.hero.subtitle}</p>
         <div class="hero-actions">
           ${data.hero.actions.map(action => `
@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <section id="friends" class="fade-in">
       <div class="container">
         <div class="eyebrow">🤝 Partners</div>
-        <h2 class="section-title">Friends of LVGO</h2>
+        <h2 class="section-title">Friends of <span class="brand-lvgo"><span class="color-l">L</span><span class="color-v">V</span><span class="color-g">G</span><span class="color-o">O</span></span></h2>
         <div class="title-underline"></div>
         <p class="section-subtitle">We're proud to collaborate with incredible venues, festivals, and organisations.</p>
         <div class="friends-grid">

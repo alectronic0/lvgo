@@ -18,6 +18,10 @@
   --accent: #b42eb0;
   --accent-hover: #9c2098;
   --accent-glow: rgba(180, 46, 176, 0.15);
+  --color-l: #ff5b94;
+  --color-v: #00e599;
+  --color-g: #00a2ff;
+  --color-o: #ff7538;
   --white: #ffffff;
   --font-heading: 'Anton', sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
@@ -46,6 +50,13 @@ a:hover { color: var(--accent-hover); }
 img { max-width: 100%; height: auto; display: block; }
 
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+/* LVGO Letter Colors (PlayStation-inspired) */
+.color-l { color: var(--color-l); }
+.color-v { color: var(--color-v); }
+.color-g { color: var(--color-g); }
+.color-o { color: var(--color-o); }
+.brand-lvgo { display: inline-block; letter-spacing: 0.04em; }
 
 /* ---------- Skip Link ---------- */
 .skip-link {
