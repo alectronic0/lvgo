@@ -94,4 +94,5 @@ The website is continuously deployed via GitHub Actions:
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+- **Source Code**: Licensed under the [MIT License](LICENSE) (HTML, CSS, JavaScript, and scripts).
+- **Media & Brand Assets**: All rights reserved. Photos, member likenesses, logos, and concert programme PDFs are excluded from the MIT license and cannot be reused or redistributed without explicit permission. See [LICENSE](LICENSE) for details.

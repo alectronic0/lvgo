@@ -1,6 +1,12 @@
+# License
+
+## Source Code
+The software source code (HTML, CSS, JavaScript, and build scripts) is licensed under the **MIT License**:
+
+```
 MIT License
 
-Copyright (c) 2026 Alec Doran-Twyford & London Video Game Orchestra
+Copyright (c) 2026 London Video Game Orchestra
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +25,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
+
+---
+
+## Media Assets, Brand & Content (All Rights Reserved)
+The following materials are **explicitly excluded** from the MIT license and remain the intellectual property and copyright of the London Video Game Orchestra and/or their respective copyright holders:
+
+1. **People & Headshots:** All photographs, portraits, and likenesses of orchestra members, founders, trustees, arrangers, and conductors located in `assets/people/` or anywhere else in this repository.
+2. **Branding & Logos:** The London Video Game Orchestra logos, brand identity, and custom graphical marks located in `assets/logo/` or `favicon.*`.
+3. **Concert Programmes & Documents:** All concert programmes, PDFs, and written publication materials located in `assets/programmes/`.
+4. **Third-Party Game IP:** Game titles, artwork, and music references remain the registered trademarks and copyrights of their respective video game publishers and creators.
+
+No license or permission is granted to copy, redistribute, republish, or commercially exploit any of the above media assets without prior written consent from the London Video Game Orchestra.
