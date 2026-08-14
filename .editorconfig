@@ -1,0 +1,36 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{js,jsx,ts,tsx}]
+max_line_length = 100000
+
+# JetBrains JavaScript / TypeScript formatting rules
+ij_javascript_array_initializer_wrap = split_into_lines
+ij_javascript_array_initializer_new_line_after_left_brace = true
+ij_javascript_array_initializer_right_brace_on_new_line = true
+ij_javascript_object_literal_wrap = off
+ij_javascript_keep_simple_blocks_in_one_line = true
+ij_javascript_keep_multiple_expressions_in_one_line = true
+
+ij_typescript_array_initializer_wrap = split_into_lines
+ij_typescript_array_initializer_new_line_after_left_brace = true
+ij_typescript_array_initializer_right_brace_on_new_line = true
+ij_typescript_object_literal_wrap = off
+ij_typescript_keep_simple_blocks_in_one_line = true
+ij_typescript_keep_multiple_expressions_in_one_line = true
+
+[*.{css,scss,less}]
+indent_size = 2
+
+[*.{html,htm}]
+indent_size = 2
+
+[*.{json,yml,yaml,md}]
+indent_size = 2

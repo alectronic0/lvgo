@@ -1,0 +1,13 @@
+{
+  "name": "lvgo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "London Video Game Orchestra website",
+  "scripts": {
+    "lint:js": "npx -y eslint \"js/**/*.js\"",
+    "lint:css": "npx -y stylelint \"css/**/*.css\"",
+    "lint": "npm run lint:js && npm run lint:css",
+    "format:check": "npx -y prettier --check \"**/*.{html,css,js,json,md}\"",
+    "format": "npx -y prettier --write \"**/*.{html,css,js,json,md}\""
+  }
+}
