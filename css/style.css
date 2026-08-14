@@ -216,7 +216,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /* ---------- Sections ---------- */
-section { padding: 100px 0; }
+section { padding: 50px 0; }
 
 .eyebrow {
   font-size: 0.85rem; font-weight: 600; color: var(--accent);
