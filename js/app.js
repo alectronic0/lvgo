@@ -640,8 +640,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     document.body.addEventListener('click', (e) => {
+      if (e.target.closest('.person-social-row')) {
+        return;
+      }
       const card = e.target.closest('.person-card');
-      if (card && !e.target.closest('.person-social-icon.active')) {
+      if (card) {
         const group = card.dataset.group;
         const index = parseInt(card.dataset.index, 10);
         let person = null;
