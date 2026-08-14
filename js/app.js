@@ -149,6 +149,65 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   };
 
+  const SOCIAL_PLATFORMS = [
+    {
+      key: 'instagram',
+      label: 'Instagram',
+      viewBox: '0 0 448 512',
+      path: 'M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z',
+    },
+    {
+      key: 'tiktok',
+      label: 'TikTok',
+      viewBox: '0 0 448 512',
+      path: 'M448 209.9a210.1 210.1 0 01-122.8-39.3v178.8A162.6 162.6 0 11185 188.3v89.9a74.6 74.6 0 1052.2 71.2V0h88a121 121 0 00122.8 122.7z',
+    },
+    {
+      key: 'spotify',
+      label: 'Spotify',
+      viewBox: '0 0 496 512',
+      path: 'M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-72.5-47-175.5-55.6-248.9-35.2-10 2.6-15.9 4.2-20.1 4.2-11.3 0-18.8-9.4-18.8-18.8 0-11.3 6.8-17.4 15.5-19.7 82.2-22.3 195.4-12.9 277 39.4 6.8 4.2 11.3 8.7 11.3 18.1.1 11.9-8.4 16.2-13.7 16.2zm27.2-69.3c-5.5 0-10.7-2.6-14.9-5.2-86.4-55.6-218.4-67.3-305.1-33-10.7 3.9-16.5 5.8-22 5.8-14.6 0-24.9-12.3-24.9-24.9 0-14.6 8.7-21 19.4-24.9 99.3-38.8 247.1-25.2 344.2 37.5 7.1 4.5 12.3 9.7 12.3 19.7.1 14.7-11.1 25-29 25z',
+    },
+    {
+      key: 'soundcloud',
+      label: 'SoundCloud',
+      viewBox: '0 0 640 512',
+      path: 'M111.4 256.3l5.8 65.8-5.8 68.2c-.4 2.6-2.2 4.8-4.8 4.8-2.4 0-4.2-2-4.6-4.6l-5-68.4 5-65.8c.4-2.8 2.2-4.8 4.6-4.8 2.6 0 4.4 2 4.8 4.8zm-37.8 23l4.2 42.8-4.2 43.6c-.2 2.4-1.8 4.2-4.2 4.2-2.2 0-3.8-1.8-4-4l-3.8-43.8 3.8-42.8c.2-2.4 1.8-4.4 4-4.4 2.4 0 4 2 4.2 4.4zm-31.4 13.8l3.4 29-3.4 29.8c-.2 1.8-1.4 3.2-3.2 3.2-1.6 0-2.8-1.4-3-3l-3-29.8 3-29c.2-2 1.4-3.4 3-3.4 1.8 0 3 1.4 3.2 3.2zM464 232c-24.6 0-47 8.4-64.8 22.4-4.4-112.8-97.4-202.4-211.2-202.4-30.6 0-60 6.6-87.2 19.2-7.4 3.4-9.4 7.8-9.6 12v311.2c.2 4.4 3.4 8.2 8 8.6h364.8c61 0 110.4-49.4 110.4-110.4S525 232 464 232z',
+    },
+    {
+      key: 'youtube',
+      label: 'YouTube',
+      viewBox: '0 0 576 512',
+      path: 'M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z',
+    },
+    {
+      key: 'linkedin',
+      label: 'LinkedIn',
+      viewBox: '0 0 448 512',
+      path: 'M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z',
+    },
+    { key: 'website', label: 'Website', isGlobe: true },
+  ];
+
+  const renderSocialSvg = (plat, size = 14) => {
+    if (plat.isGlobe) {
+      return `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>`;
+    }
+    return `<svg viewBox="${plat.viewBox}" width="${size}" height="${size}" fill="currentColor" aria-hidden="true"><path d="${plat.path}"/></svg>`;
+  };
+
+  const renderPersonSocialIcons = (person, size = 14) => {
+    return SOCIAL_PLATFORMS.map((plat) => {
+      const link = (person.links || []).find(
+        (l) => l.icon && l.icon.toLowerCase().includes(plat.key)
+      );
+      if (link) {
+        return `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="person-social-icon active" aria-label="${person.name} on ${plat.label}" title="${plat.label}" onclick="event.stopPropagation()">${renderSocialSvg(plat, size)}</a>`;
+      }
+      return `<span class="person-social-icon disabled" aria-hidden="true" title="${plat.label}">${renderSocialSvg(plat, size)}</span>`;
+    }).join('');
+  };
+
   const getSocialIcon = (name, size = 16) => {
     const social = data.socials.find((s) => s.name.toLowerCase().includes(name.toLowerCase()));
     if (social) {
@@ -160,10 +219,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return name;
   };
 
-  const renderPersonCard = (person) => `
-    <div class="person-card">
-      <img src="${person.image}" alt="${person.name}" loading="lazy">
-      <div class="person-name">${person.name}</div>
+  const renderPersonCard = (person, index, group = 'arrangers') => `
+    <article class="person-card" data-group="${group}" data-index="${index}" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View profile for ${person.name}">
+      <div class="person-card-img-wrapper">
+        <img src="${person.image}" alt="${person.name}" loading="lazy" width="500" height="500">
+      </div>
+      <h4 class="person-name">${person.name}</h4>
       ${person.role ? `<div class="person-role">${person.role}</div>` : ''}
       ${
         person.instruments
@@ -174,16 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
       `
           : ''
       }
-      ${
-        person.links && person.links.length > 0
-          ? `
-        <div class="person-links">
-          ${person.links.map((l) => `<a href="${l.url}" target="_blank" rel="noopener noreferrer" aria-label="${l.icon}">${getSocialIcon(l.icon)}</a>`).join('')}
-        </div>
-      `
-          : ''
-      }
-    </div>
+      <div class="person-social-row">
+        ${renderPersonSocialIcons(person, 14)}
+      </div>
+    </article>
   `;
 
   const renderPeople = () => `
@@ -196,40 +251,33 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="people-section">
           <h3>Founders</h3>
           <div class="people-grid">
-            ${data.people.founders.map(renderPersonCard).join('')}
+            ${data.people.founders.map((p, i) => renderPersonCard(p, i, 'founders')).join('')}
           </div>
         </div>
 
         <div class="people-section">
           <h3>Committee</h3>
           <div class="people-grid">
-            ${data.people.committee.map(renderPersonCard).join('')}
+            ${data.people.committee.map((p, i) => renderPersonCard(p, i, 'committee')).join('')}
           </div>
         </div>
 
         <div class="people-section">
           <h3>Conductor</h3>
           <div class="conductor-layout">
-            <img src="${data.people.conductor.image}" alt="${data.people.conductor.name} — Conductor" loading="lazy">
+            <div class="conductor-card-col">
+              ${renderPersonCard(data.people.conductor, 0, 'conductor')}
+            </div>
             <div class="conductor-bio">
               ${data.people.conductor.bio.map((p) => `<p>${p}</p><br>`).join('')}
-              ${
-                data.people.conductor.links && data.people.conductor.links.length > 0
-                  ? `
-                <div class="person-links" style="margin-top: 16px;">
-                  ${data.people.conductor.links.map((l) => `<a href="${l.url}" target="_blank" rel="noopener noreferrer" aria-label="${l.icon}">${getSocialIcon(l.icon)}</a>`).join('')}
-                </div>
-              `
-                  : ''
-              }
             </div>
           </div>
         </div>
 
         <div class="people-section">
-          <h3>Arrangers & Composers</h3>
+          <h3>Arrangers &amp; Composers</h3>
           <div class="people-grid">
-            ${data.people.arrangers.map(renderPersonCard).join('')}
+            ${data.people.arrangers.map((p, i) => renderPersonCard(p, i, 'arrangers')).join('')}
           </div>
         </div>
       </div>
@@ -453,6 +501,26 @@ document.addEventListener('DOMContentLoaded', () => {
     </dialog>
   `;
 
+  const renderPersonModal = () => `
+    <dialog id="person-modal" class="person-modal" aria-label="Team Member Profile">
+      <div class="person-modal-card">
+        <button class="person-modal-close" aria-label="Close profile modal" type="button">&times;</button>
+        <div class="person-modal-grid">
+          <div class="person-modal-img-col">
+            <img id="person-modal-img" src="" alt="" width="500" height="500">
+          </div>
+          <div class="person-modal-info-col">
+            <div class="person-modal-badges" id="person-modal-badges"></div>
+            <h3 class="person-modal-name" id="person-modal-name"></h3>
+            <div class="person-modal-role" id="person-modal-role"></div>
+            <div class="person-modal-bio" id="person-modal-bio"></div>
+            <div class="person-modal-socials" id="person-modal-socials"></div>
+          </div>
+        </div>
+      </div>
+    </dialog>
+  `;
+
   // --- Injection ---
   if (!document.querySelector('.skip-link')) {
     document.body.insertAdjacentHTML(
@@ -469,16 +537,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!document.querySelector('#lightbox')) {
     document.body.insertAdjacentHTML('beforeend', renderLightbox());
   }
+  if (!document.querySelector('#person-modal')) {
+    document.body.insertAdjacentHTML('beforeend', renderPersonModal());
+  }
 
-  // Lightbox functionality
+  // Lightbox functionality for posters and hero logo
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
 
   if (lightbox && lightboxImg) {
     document.body.addEventListener('click', (e) => {
-      if (
-        e.target.matches('.concert-poster, .person-card img, .conductor-layout img, .hero-logo')
-      ) {
+      if (e.target.matches('.concert-poster, .hero-logo')) {
         lightboxImg.src = e.target.currentSrc || e.target.src;
         lightboxImg.alt = e.target.alt || 'Expanded Preview';
         lightbox.showModal();
@@ -487,6 +556,95 @@ document.addEventListener('DOMContentLoaded', () => {
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox || e.target.matches('.lightbox-close, .lightbox-close *')) {
         lightbox.close();
+      }
+    });
+  }
+
+  // Person Modal functionality
+  const personModal = document.getElementById('person-modal');
+  if (personModal) {
+    const openPersonModal = (person) => {
+      if (!person) return;
+      const img = document.getElementById('person-modal-img');
+      const name = document.getElementById('person-modal-name');
+      const role = document.getElementById('person-modal-role');
+      const badges = document.getElementById('person-modal-badges');
+      const bio = document.getElementById('person-modal-bio');
+      const socials = document.getElementById('person-modal-socials');
+
+      if (img) {
+        img.src = person.image;
+        img.alt = person.name;
+      }
+      if (name) name.textContent = person.name;
+      if (role) role.textContent = person.role || 'Arranger & Composer';
+
+      if (badges) {
+        let badgesHtml = '';
+        if (person.role) {
+          badgesHtml += `<span class="modal-badge role-badge">${person.role}</span>`;
+        } else {
+          badgesHtml += `<span class="modal-badge role-badge">Arranger &amp; Composer</span>`;
+        }
+        if (person.instruments && person.instruments.length > 0) {
+          badgesHtml += person.instruments
+            .map((inst) => `<span class="modal-badge inst-badge">${inst}</span>`)
+            .join('');
+        }
+        badges.innerHTML = badgesHtml;
+      }
+
+      if (bio) {
+        if (person.bio) {
+          bio.innerHTML = Array.isArray(person.bio)
+            ? person.bio.map((p) => `<p>${p}</p>`).join('')
+            : `<p>${person.bio}</p>`;
+        } else {
+          const desc = person.role
+            ? `${person.name} serves as ${person.role} for the London Video Game Orchestra, bringing people together through video game music.`
+            : `${person.name} is an arranger and composer with the London Video Game Orchestra, crafting symphonic arrangements of iconic video game soundtracks.`;
+          bio.innerHTML = `<p>${desc}</p>`;
+        }
+      }
+
+      if (socials) {
+        socials.innerHTML = renderPersonSocialIcons(person, 18);
+      }
+
+      personModal.showModal();
+    };
+
+    document.body.addEventListener('click', (e) => {
+      const card = e.target.closest('.person-card');
+      if (card && !e.target.closest('.person-social-icon.active')) {
+        const group = card.dataset.group;
+        const index = parseInt(card.dataset.index, 10);
+        let person = null;
+        if (group === 'conductor') person = data.people.conductor;
+        else if (group === 'founders') person = data.people.founders[index];
+        else if (group === 'committee') person = data.people.committee[index];
+        else if (group === 'arrangers') person = data.people.arrangers[index];
+
+        if (person) openPersonModal(person);
+      }
+    });
+
+    document.body.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const card = document.activeElement && document.activeElement.closest('.person-card');
+        if (card) {
+          e.preventDefault();
+          card.click();
+        }
+      }
+    });
+
+    personModal.addEventListener('click', (e) => {
+      if (
+        e.target === personModal ||
+        e.target.matches('.person-modal-close, .person-modal-close *')
+      ) {
+        personModal.close();
       }
     });
   }
