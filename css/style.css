@@ -167,8 +167,8 @@ img { max-width: 100%; height: auto; display: block; }
 .hero h1 .accent { color: var(--accent); }
 
 .hero-subtitle {
-  font-size: 1.15rem; color: var(--text-muted); max-width: 600px;
-  margin: 0 auto 32px; line-height: 1.7;
+  font-size: 1.15rem; color: var(--text-muted); max-width: 680px;
+  margin: 0 auto 32px; line-height: 1.7; text-wrap: balance;
 }
 
 .hero-badge {

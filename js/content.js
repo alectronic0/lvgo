@@ -10,7 +10,7 @@ window.CONTENT = {
     rehearsals: "Rehearsals every Thursday near Old St / Angel / Barbican"
   },
   hero: {
-    subtitle: "A community orchestra founded in 2019, dedicated to making the awe-inspiring world of video game music more accessible to wider audiences.",
+    subtitle: "A community orchestra founded in 2019,<br>dedicated to making the awe&#8209;inspiring world of video game music<br>more accessible to wider audiences.",
     actions: [
       { label: "🎵 Our Concerts", url: "#concerts", primary: true },
       { label: "📬 Join Mailing List", url: "https://lvgo.us3.list-manage.com/subscribe?u=8a48a10aade9d25fd6d7866ac&id=35b54b4a93", primary: false, external: true }
