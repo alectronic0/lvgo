@@ -946,6 +946,7 @@ section {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
+.friend-card h3,
 .friend-card h4 {
   font-size: 1rem;
   color: var(--white);
@@ -1086,7 +1087,7 @@ section {
   padding-top: 16px;
   border-top: 1px solid var(--border);
   font-size: 0.8rem;
-  color: #555;
+  color: var(--text-muted);
 }
 
 /* ---------- 404 ---------- */

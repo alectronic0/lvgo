@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const renderHero = () => `
     <section class="hero" id="hero">
       <div class="hero-content">
-        <img class="hero-logo" src="${data.site.heroLogoPath}" alt="${data.site.name}">
+        <img class="hero-logo" src="${data.site.heroLogoPath}" alt="${data.site.name}" width="120" height="120" fetchpriority="high">
         <h1><span class="color-l">L</span>ondon <span class="color-v">V</span>ideo <span class="color-g">G</span>ame <span class="color-o">O</span>rchestra</h1>
         <p class="hero-subtitle">${data.hero.subtitle}</p>
         <div class="hero-actions">
@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .map(
               (friend) => `
             <a class="friend-card" href="${friend.url}" target="_blank" rel="noopener">
-              <h4>${friend.icon} ${friend.name}</h4>
+              <h3>${friend.icon} ${friend.name}</h3>
               <p>${friend.desc}</p>
               <span class="friend-link">${friend.link} →</span>
             </a>
