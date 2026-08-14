@@ -2,7 +2,7 @@
 
 Official static website for the **London Video Game Orchestra** — a community orchestra dedicated to bringing the music of video games to life across London and beyond.
 
-🔗 **Live Website**: [lvgo.co.uk](https://lvgo.co.uk/)  
+🔗 **Live Website**: [lvgo.co.uk](https://lvgo.co.uk/)
 🏛️ **Registered Charity No.** 1207314 (England & Wales)
 
 ---
@@ -10,7 +10,6 @@ Official static website for the **London Video Game Orchestra** — a community 
 ## 🚀 Features
 
 - **⚡ Fast & Lightweight**: Pure vanilla HTML5, CSS3, and JavaScript — zero runtime dependencies, instant initial loads.
-- **🎨 Playstation-Inspired Brand Aesthetic**: Clean dark mode with authentic PlayStation-themed letter accents (L: Pink, V: Green, G: Blue, O: Orange).
 - **♿ WCAG 2.1/2.2 AA Compliant**: High-contrast typography, focus-visible indicators, skip link, accessible dialog lightboxes, and reduced-motion support.
 - **📱 Fully Responsive**: Fluid layout scaling from mobile viewports to ultra-wide displays.
 - **SEO & Social Optimized**: Open Graph, Twitter Cards, semantic structured data, JSON manifest, and XML sitemap.
@@ -20,20 +19,12 @@ Official static website for the **London Video Game Orchestra** — a community 
 
 ## 🛠️ Local Development
 
-You can run and preview the site locally using any static web server:
-
-### Option 1: Using npm (Recommended)
 ```bash
 # Start local development server (http://localhost:3000)
 npm run dev
 
 # Or using npm start
 npm start
-```
-
-### Option 2: Using Python
-```bash
-python3 -m http.server 3000
 ```
 
 ---
