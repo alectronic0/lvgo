@@ -207,7 +207,7 @@ window.CONTENT = {
     committee: [
       { name: "Gemma Kappala-Ramsamy", role: "Chair-Trustee", image: "assets/people/Committeepax-3.png" },
       { name: "Griffin Jenkins", role: "Secretary-Trustee", image: "assets/people/Committeepax.png" },
-      { name: "Joe Davies", role: "Conductor", image: "assets/people/Joe-Davies-Conductor-2.png" },
+      { name: "Louis Lyle", role: "Treasurer-Trustee", image: "assets/people/Joe-Davies-Conductor-2.png" },
       { name: "Louis James", role: "Librarian-Trustee", image: "assets/people/Committeepax-4.png" },
       { name: "Jamie Flach", role: "Rehearsal Manager", image: "assets/people/Committeepax-5.png" },
       { name: "Carlo Pulvirenti", role: "Concert Manager", image: "assets/people/Committeepax-6.png" }
