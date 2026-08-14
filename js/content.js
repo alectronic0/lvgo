@@ -2,8 +2,8 @@ window.CONTENT = {
   site: {
     name: 'London Video Game Orchestra',
     shortName: 'LVGO',
-    logoPath: 'assets/logo/lvgo-150.png',
-    heroLogoPath: 'assets/logo/lvgo-300.png',
+    logoPath: 'assets/logo/lvgo-300.png',
+    heroLogoPath: 'assets/logo/lvgo-1024.png',
     charityNo: '1207314',
     charityUrl:
       'https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5289529',
