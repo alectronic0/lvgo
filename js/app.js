@@ -251,15 +251,6 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
       <h4 class="person-name">${person.name}</h4>
       ${person.role ? `<div class="person-role">${person.role}</div>` : ''}
-      ${
-        person.instruments
-          ? `
-        <div class="person-instruments">
-          ${person.instruments.map((inst) => `<span class="instrument-chip">${inst}</span>`).join('')}
-        </div>
-      `
-          : ''
-      }
       <div class="person-social-row">
         ${renderPersonSocialIcons(person, 14)}
       </div>
