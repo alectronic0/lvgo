@@ -5,7 +5,9 @@
    ============================================================ */
 
 /* ---------- Reset & Base ---------- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -111,7 +113,8 @@ img {
   transition: top 0.2s ease-in-out;
 }
 
-.skip-link:focus, .skip-link:focus-visible {
+.skip-link:focus,
+.skip-link:focus-visible {
   top: 16px;
   outline: 3px solid var(--color-g);
 }
@@ -122,7 +125,10 @@ img {
   outline-offset: 3px;
 }
 
-button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-visible {
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
   outline: 2px solid var(--color-g);
   outline-offset: 3px;
 }
@@ -319,7 +325,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -349,7 +356,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   margin: 0 auto 32px;
   line-height: 1.7;
   text-wrap: balance;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.8);
+  text-shadow:
+    0 2px 14px rgba(0, 0, 0, 0.95),
+    0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 .hero-badge {
@@ -712,7 +721,10 @@ section {
   background: #333333;
 }
 
-.concert-poster, .person-card img, .conductor-layout img, .hero-logo {
+.concert-poster,
+.person-card img,
+.conductor-layout img,
+.hero-logo {
   cursor: zoom-in;
 }
 
@@ -1143,7 +1155,9 @@ section {
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
 .fade-in.visible {
@@ -1152,13 +1166,8 @@ section {
 }
 
 /* ---------- Year placeholder ---------- */
-.year { /* populated by JS */
-}
-
-.person-instruments {
-  font-size: 0.85rem;
-  color: var(--primary);
-  margin-top: 4px;
+.year {
+  /* populated by JS */
 }
 
 .person-links {
@@ -1176,13 +1185,15 @@ section {
 }
 
 .person-links a:hover {
-  color: var(--primary);
+  color: var(--accent);
   transform: translateY(-2px);
 }
 
 /* ---------- Reduced Motion (WCAG 2.3.3) ---------- */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

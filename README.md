@@ -78,6 +78,7 @@ npm run format:check
 ## 🚢 Deployment & CI/CD
 
 The website is continuously deployed via GitHub Actions:
+
 - On push to `main`, GitHub Actions validates, minifies CSS/JS, runs Lighthouse CI checks, and publishes the static assets to GitHub Pages.
 - Build artifacts, `node_modules`, and internal developer configs are automatically excluded from the public deployment bundle.
 

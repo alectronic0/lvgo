@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const page = main.getAttribute('data-page');
 
   // --- Templates ---
-  
+
   const renderHeader = () => `
     <header class="site-nav">
       <div class="nav-inner">
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <span></span><span></span><span></span>
         </button>
         <nav class="nav-links" aria-label="Main navigation">
-          ${data.nav.map(link => `<a href="${link.url}">${link.label}</a>`).join('')}
+          ${data.nav.map((link) => `<a href="${link.url}">${link.label}</a>`).join('')}
         </nav>
       </div>
     </header>
@@ -36,9 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
         <h1><span class="color-l">L</span>ondon <span class="color-v">V</span>ideo <span class="color-g">G</span>ame <span class="color-o">O</span>rchestra</h1>
         <p class="hero-subtitle">${data.hero.subtitle}</p>
         <div class="hero-actions">
-          ${data.hero.actions.map(action => `
+          ${data.hero.actions
+            .map(
+              (action) => `
             <a class="btn ${action.primary ? 'btn-primary' : 'btn-secondary'}" href="${action.url}" ${action.external ? 'target="_blank" rel="noopener"' : ''}>${action.label}</a>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
       </div>
     </section>
@@ -52,21 +56,25 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="title-underline"></div>
         <p class="section-subtitle">${data.about.subtitle}</p>
         <div class="about-grid">
-          ${data.about.values.map(val => `
+          ${data.about.values
+            .map(
+              (val) => `
             <div class="about-card">
               <h3>${val.icon} ${val.title}</h3>
               <p>${val.text}</p>
             </div>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
       </div>
     </section>
   `;
 
   const renderConcerts = () => {
-    const hasUpcoming = data.concerts.list.some(c => c.status === 'upcoming');
-    const past = data.concerts.list.filter(c => c.status === 'past');
-    
+    const hasUpcoming = data.concerts.list.some((c) => c.status === 'upcoming');
+    const past = data.concerts.list.filter((c) => c.status === 'past');
+
     return `
       <section id="concerts" class="fade-in">
         <div class="container">
@@ -76,24 +84,30 @@ document.addEventListener('DOMContentLoaded', () => {
           <p class="section-subtitle">${data.concerts.subtitle}</p>
           
           <div class="concerts-list">
-            ${!hasUpcoming ? `
+            ${
+              !hasUpcoming
+                ? `
               <div class="concert-cta">
                 <h3>No upcoming concerts at the moment!</h3>
                 <p>Join our mailing list to be the first to hear about future performances.</p>
-                <a class="btn btn-primary" href="${data.hero.actions.find(a => a.label.includes('Join Mailing List')).url}" target="_blank" rel="noopener">Subscribe for updates</a>
+                <a class="btn btn-primary" href="${data.hero.actions.find((a) => a.label.includes('Join Mailing List')).url}" target="_blank" rel="noopener">Subscribe for updates</a>
               </div>
-            ` : ''}
+            `
+                : ''
+            }
 
-            ${data.concerts.list.map(c => {
-              const isHiddenPast = c.status === 'past' && past.indexOf(c) >= 3;
-              const extraStyles = [];
-              if (c.status === 'upcoming') extraStyles.push('position:relative;');
-              if (isHiddenPast) extraStyles.push('display:none;');
-              return `
+            ${data.concerts.list
+              .map((c) => {
+                const isHiddenPast = c.status === 'past' && past.indexOf(c) >= 3;
+                const extraStyles = [];
+                if (c.status === 'upcoming') extraStyles.push('position:relative;');
+                if (isHiddenPast) extraStyles.push('display:none;');
+                return `
               <div class="concert-card ${c.status === 'upcoming' ? 'upcoming' : ''} ${c.isLandscape ? 'landscape-card' : ''} ${isHiddenPast ? 'past-hidden' : ''}" style="${extraStyles.join(' ')}">
-                ${c.poster 
-                  ? `<img class="concert-poster" src="${c.poster}" alt="${c.title} concert poster" loading="lazy">` 
-                  : `<div class="concert-poster-placeholder"><img src="${data.site.logoPath}" alt="LVGO Logo"></div>`
+                ${
+                  c.poster
+                    ? `<img class="concert-poster" src="${c.poster}" alt="${c.title} concert poster" loading="lazy">`
+                    : `<div class="concert-poster-placeholder"><img src="${data.site.logoPath}" alt="LVGO Logo"></div>`
                 }
                 <div class="concert-info">
                   <span class="concert-badge ${c.status === 'upcoming' ? 'upcoming-badge' : 'past-badge'}">${c.badge}</span>
@@ -116,21 +130,27 @@ document.addEventListener('DOMContentLoaded', () => {
                   ${c.soundcloudEmbed ? `<div class="concert-embed">${c.soundcloudEmbed}</div>` : ''}
                 </div>
               </div>
-            `}).join('')}
+            `;
+              })
+              .join('')}
           </div>
 
-          ${past.length > 3 ? `
+          ${
+            past.length > 3
+              ? `
             <div style="text-align: center; margin-top: 48px;">
               <button id="expand-history-btn" class="btn btn-secondary">Show all past concerts</button>
             </div>
-          ` : ''}
+          `
+              : ''
+          }
         </div>
       </section>
     `;
   };
 
   const getSocialIcon = (name, size = 16) => {
-    const social = data.socials.find(s => s.name.toLowerCase().includes(name.toLowerCase()));
+    const social = data.socials.find((s) => s.name.toLowerCase().includes(name.toLowerCase()));
     if (social) {
       return `<svg viewBox="${social.viewBox}" style="width: ${size}px; height: ${size}px; fill: currentColor;"><path d="${social.iconPath}"/></svg>`;
     }
@@ -145,16 +165,24 @@ document.addEventListener('DOMContentLoaded', () => {
       <img src="${person.image}" alt="${person.name}" loading="lazy">
       <div class="person-name">${person.name}</div>
       ${person.role ? `<div class="person-role">${person.role}</div>` : ''}
-      ${person.instruments ? `
+      ${
+        person.instruments
+          ? `
         <div class="person-instruments">
-          ${person.instruments.map(inst => `<span class="instrument-chip">${inst}</span>`).join('')}
+          ${person.instruments.map((inst) => `<span class="instrument-chip">${inst}</span>`).join('')}
         </div>
-      ` : ''}
-      ${person.links && person.links.length > 0 ? `
+      `
+          : ''
+      }
+      ${
+        person.links && person.links.length > 0
+          ? `
         <div class="person-links">
-          ${person.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener" aria-label="${l.icon}">${getSocialIcon(l.icon)}</a>`).join('')}
+          ${person.links.map((l) => `<a href="${l.url}" target="_blank" rel="noopener" aria-label="${l.icon}">${getSocialIcon(l.icon)}</a>`).join('')}
         </div>
-      ` : ''}
+      `
+          : ''
+      }
     </div>
   `;
 
@@ -184,12 +212,16 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="conductor-layout">
             <img src="${data.people.conductor.image}" alt="${data.people.conductor.name} — Conductor" loading="lazy">
             <div class="conductor-bio">
-              ${data.people.conductor.bio.map(p => `<p>${p}</p><br>`).join('')}
-              ${data.people.conductor.links && data.people.conductor.links.length > 0 ? `
+              ${data.people.conductor.bio.map((p) => `<p>${p}</p><br>`).join('')}
+              ${
+                data.people.conductor.links && data.people.conductor.links.length > 0
+                  ? `
                 <div class="person-links" style="margin-top: 16px;">
-                  ${data.people.conductor.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener" aria-label="${l.icon}">${getSocialIcon(l.icon)}</a>`).join('')}
+                  ${data.people.conductor.links.map((l) => `<a href="${l.url}" target="_blank" rel="noopener" aria-label="${l.icon}">${getSocialIcon(l.icon)}</a>`).join('')}
                 </div>
-              ` : ''}
+              `
+                  : ''
+              }
             </div>
           </div>
         </div>
@@ -212,32 +244,45 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="title-underline"></div>
         
         <div class="media-platforms" style="display: flex; gap: 24px; margin-bottom: 40px; justify-content: center;">
-          ${data.socials.filter(s => ['youtube', 'flickr', 'soundcloud'].includes(s.name.toLowerCase())).map(s => `
+          ${data.socials
+            .filter((s) => ['youtube', 'flickr', 'soundcloud'].includes(s.name.toLowerCase()))
+            .map(
+              (s) => `
             <a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.name}" class="platform-link" style="color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; transition: color var(--transition);">
               <div style="background: var(--surface); padding: 16px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; transition: border-color var(--transition);">
                 ${getSocialIcon(s.name, 28)}
               </div>
               <span style="font-size: 0.85rem; font-weight: 600;">${s.name}</span>
             </a>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
 
         <div class="video-grid">
-          ${data.media.videos.map(video => `
+          ${data.media.videos
+            .map(
+              (video) => `
             <div class="video-embed">
               <iframe src="${video.url}" title="${video.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
 
         <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--white); margin-bottom: 24px;">Press &amp; Features</h3>
         <div class="media-grid">
-          ${data.media.press.map(item => `
+          ${data.media.press
+            .map(
+              (item) => `
             <a class="media-card" href="${item.url}" target="_blank" rel="noopener">
               <h4>${item.title}</h4>
               <div class="media-source">${item.source} — ${item.date}</div>
             </a>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
       </div>
     </section>
@@ -251,13 +296,17 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="title-underline"></div>
         <p class="section-subtitle">We're proud to collaborate with incredible venues, festivals, and organisations.</p>
         <div class="friends-grid">
-          ${data.friends.map(friend => `
+          ${data.friends
+            .map(
+              (friend) => `
             <a class="friend-card" href="${friend.url}" target="_blank" rel="noopener">
               <h4>${friend.icon} ${friend.name}</h4>
               <p>${friend.desc}</p>
               <span class="friend-link">${friend.link} →</span>
             </a>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
       </div>
     </section>
@@ -270,14 +319,18 @@ document.addEventListener('DOMContentLoaded', () => {
         <h2 class="section-title">Connect With Us</h2>
         <div class="title-underline"></div>
         <div class="connect-grid">
-          ${data.connect.map(item => `
+          ${data.connect
+            .map(
+              (item) => `
             <a class="connect-card" href="${item.url}" ${!item.url.startsWith('mailto:') ? 'target="_blank" rel="noopener"' : ''}>
               <div class="connect-icon">${item.icon}</div>
               <h3>${item.title}</h3>
               <p>${item.desc}</p>
               <span class="connect-cta">${item.cta} →</span>
             </a>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
       </div>
     </section>
@@ -287,13 +340,17 @@ document.addEventListener('DOMContentLoaded', () => {
     <footer class="site-footer">
       <div class="footer-inner">
         <ul class="footer-socials">
-          ${data.socials.map(s => `
+          ${data.socials
+            .map(
+              (s) => `
             <li>
               <a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.name}">
                 <svg viewBox="${s.viewBox}"><path d="${s.iconPath}"/></svg>
               </a>
             </li>
-          `).join('')}
+          `
+            )
+            .join('')}
         </ul>
         <div class="footer-info">
           <p>${data.site.name} · <a href="mailto:${data.site.email}">${data.site.email}</a></p>
@@ -398,7 +455,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Injection ---
   if (!document.querySelector('.skip-link')) {
-    document.body.insertAdjacentHTML('afterbegin', '<a href="#main-content" class="skip-link">Skip to main content</a>');
+    document.body.insertAdjacentHTML(
+      'afterbegin',
+      '<a href="#main-content" class="skip-link">Skip to main content</a>'
+    );
   }
   if (!document.querySelector('.site-nav')) {
     document.body.insertAdjacentHTML('afterbegin', renderHeader());
@@ -416,7 +476,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (lightbox && lightboxImg) {
     document.body.addEventListener('click', (e) => {
-      if (e.target.matches('.concert-poster, .person-card img, .conductor-layout img, .hero-logo')) {
+      if (
+        e.target.matches('.concert-poster, .person-card img, .conductor-layout img, .hero-logo')
+      ) {
         lightboxImg.src = e.target.currentSrc || e.target.src;
         lightboxImg.alt = e.target.alt || 'Expanded Preview';
         lightbox.showModal();
@@ -429,12 +491,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  document.querySelectorAll('.year').forEach(el => {
+  document.querySelectorAll('.year').forEach((el) => {
     el.textContent = new Date().getFullYear();
   });
 
   if (page === 'home') {
-    main.innerHTML = renderHero() + renderAbout() + renderConcerts() + renderPeople() + renderMedia() + renderFriends() + renderConnect();
+    main.innerHTML =
+      renderHero() +
+      renderAbout() +
+      renderConcerts() +
+      renderPeople() +
+      renderMedia() +
+      renderFriends() +
+      renderConnect();
 
     // Mobile nav toggle
     const toggle = document.querySelector('.nav-toggle');
@@ -446,7 +515,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toggle.classList.toggle('active');
         links.classList.toggle('active');
       });
-      document.querySelectorAll('.nav-links a').forEach(link => {
+      document.querySelectorAll('.nav-links a').forEach((link) => {
         link.addEventListener('click', () => {
           toggle.setAttribute('aria-expanded', 'false');
           toggle.classList.remove('active');
@@ -458,7 +527,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const expandBtn = document.getElementById('expand-history-btn');
     if (expandBtn) {
       expandBtn.addEventListener('click', () => {
-        document.querySelectorAll('.concert-card.past-hidden').forEach(card => {
+        document.querySelectorAll('.concert-card.past-hidden').forEach((card) => {
           card.style.display = '';
           // Trigger fade in for newly visible items if they are in viewport
           observer.observe(card);
@@ -467,34 +536,33 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  } 
-  else if (page === 'policies') {
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+  } else if (page === 'policies') {
     main.innerHTML = renderPolicies();
-  }
-  else if (page === 'arrangements') {
+  } else if (page === 'arrangements') {
     main.innerHTML = renderArrangements();
-  }
-  else if (page === 'join-us') {
+  } else if (page === 'join-us') {
     main.innerHTML = renderJoinUs();
-  }
-  else if (page === '404') {
+  } else if (page === '404') {
     main.innerHTML = renderNotFound();
-    
+
     const notFoundData = data.not_found_data;
     if (notFoundData && notFoundData.length > 0) {
       const random = notFoundData[Math.floor(Math.random() * notFoundData.length)];
       const titleEl = document.getElementById('title');
       const msgEl = document.getElementById('message');
-      
+
       if (titleEl) titleEl.textContent = random.title;
       if (msgEl) msgEl.textContent = random.message;
     }
