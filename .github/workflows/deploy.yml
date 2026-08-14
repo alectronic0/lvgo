@@ -59,6 +59,10 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
 
+      - name: Clean build artifacts for deployment
+        run: |
+          rm -rf node_modules package-lock.json
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
