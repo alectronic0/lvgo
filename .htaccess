@@ -18,6 +18,11 @@ RewriteRule ^media/?$ /#media [R=301,NE,L]
 RewriteRule ^contact-us/?$ /#connect [R=301,NE,L]
 RewriteRule ^press/?$ /#connect [R=301,NE,L]
 RewriteRule ^cookie-policy/?$ /policies.html [R=301,L]
+RewriteRule ^policies/?$ /policies.html [R=301,L]
+RewriteRule ^join-us/?$ /join-us.html [R=301,L]
+RewriteRule ^arrangements/?$ /arrangements.html [R=301,L]
+RewriteRule ^members/?$ /#connect [R=301,NE,L]
+RewriteRule ^store/?$ /#concerts [R=301,NE,L]
 
 # ----------------------------------------------------------------------
 # 3. Clean URLs (strip / append .html extension)

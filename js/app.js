@@ -734,6 +734,28 @@ document.addEventListener('DOMContentLoaded', () => {
   } else if (page === 'join-us') {
     main.innerHTML = renderJoinUs();
   } else if (page === '404') {
+    const rawPath = window.location.pathname.replace(/\/$/, '').toLowerCase();
+    const routeMap = {
+      '/concerts': './index.html#concerts',
+      '/who-we-are': './index.html#people',
+      '/our-mission': './index.html#about',
+      '/media': './index.html#media',
+      '/contact-us': './index.html#connect',
+      '/press': './index.html#connect',
+      '/cookie-policy': './policies.html',
+      '/policies': './policies.html',
+      '/join-us': './join-us.html',
+      '/arrangements': './arrangements.html',
+      '/members': './index.html#connect',
+      '/store': './index.html#concerts',
+    };
+
+    const match = Object.keys(routeMap).find((k) => rawPath === k || rawPath.endsWith(k));
+    if (match) {
+      window.location.replace(routeMap[match]);
+      return;
+    }
+
     main.innerHTML = renderNotFound();
 
     const notFoundData = data.not_found_data;
