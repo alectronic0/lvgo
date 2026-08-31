@@ -1,0 +1,60 @@
+# London Video Game Orchestra (LVGO) - Hostinger / Apache Server Configuration
+RewriteEngine On
+RewriteBase /
+
+# ----------------------------------------------------------------------
+# 1. Enforce HTTPS
+# ----------------------------------------------------------------------
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ----------------------------------------------------------------------
+# 2. Legacy WordPress Slugs 301 Redirects
+# ----------------------------------------------------------------------
+RewriteRule ^concerts/?$ /#concerts [R=301,NE,L]
+RewriteRule ^who-we-are/?$ /#people [R=301,NE,L]
+RewriteRule ^our-mission/?$ /#about [R=301,NE,L]
+RewriteRule ^media/?$ /#media [R=301,NE,L]
+RewriteRule ^contact-us/?$ /#connect [R=301,NE,L]
+RewriteRule ^press/?$ /#connect [R=301,NE,L]
+RewriteRule ^cookie-policy/?$ /policies.html [R=301,L]
+
+# ----------------------------------------------------------------------
+# 3. Clean URLs (strip / append .html extension)
+# ----------------------------------------------------------------------
+# Redirect /page.html to /page
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# Internally rewrite /page to /page.html if it exists
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*?)/?$ $1.html [L]
+
+# ----------------------------------------------------------------------
+# 4. Custom Error Documents
+# ----------------------------------------------------------------------
+ErrorDocument 404 /404.html
+
+# ----------------------------------------------------------------------
+# 5. Security & MIME / Browser Caching
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+    # Security Headers
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Static Asset Caching
+    <FilesMatch "\.(ico|pdf|jpg|jpeg|png|webp|gif|svg|woff|woff2|ttf|otf|mp4|webm)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "max-age=604800, public"
+    </FilesMatch>
+
+    <FilesMatch "\.(html|json|xml)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+</IfModule>

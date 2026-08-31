@@ -74,3 +74,28 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Deploy to Hostinger via native lftp (FTPS)
+        if: ${{ secrets.HOSTINGER_SERVER != '' && secrets.HOSTINGER_USERNAME != '' && secrets.HOSTINGER_PASSWORD != '' }}
+        env:
+          FTP_SERVER: ${{ secrets.HOSTINGER_SERVER }}
+          FTP_USER: ${{ secrets.HOSTINGER_USERNAME }}
+          FTP_PASS: ${{ secrets.HOSTINGER_PASSWORD }}
+        run: |
+          sudo apt-get update && sudo apt-get install -y lftp
+          lftp -u "$FTP_USER","$FTP_PASS" "$FTP_SERVER" -e "
+            set ftp:ssl-force true;
+            set ftp:ssl-protect-data true;
+            set ssl:verify-certificate false;
+            mirror --reverse --delete --verbose \
+              --exclude-glob .git* \
+              --exclude-glob .github/ \
+              --exclude-glob node_modules/ \
+              --exclude-glob package*.json \
+              --exclude-glob eslint.config.js \
+              --exclude-glob .prettierrc.json \
+              --exclude-glob .stylelintrc.json \
+              --exclude-glob scripts/ \
+              ./ ./public_html/;
+            quit
+          "
