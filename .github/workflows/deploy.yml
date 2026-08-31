@@ -76,11 +76,11 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Deploy to Hostinger via native lftp (FTPS)
-        if: ${{ secrets.HOSTINGER_SERVER != '' && secrets.HOSTINGER_USERNAME != '' && secrets.HOSTINGER_PASSWORD != '' }}
         env:
           FTP_SERVER: ${{ secrets.HOSTINGER_SERVER }}
           FTP_USER: ${{ secrets.HOSTINGER_USERNAME }}
           FTP_PASS: ${{ secrets.HOSTINGER_PASSWORD }}
+        if: env.FTP_SERVER != '' && env.FTP_USER != '' && env.FTP_PASS != ''
         run: |
           sudo apt-get update && sudo apt-get install -y lftp
           lftp -u "$FTP_USER","$FTP_PASS" "$FTP_SERVER" -e "
