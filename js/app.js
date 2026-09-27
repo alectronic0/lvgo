@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const renderHeader = () => `
     <header class="site-nav">
       <div class="nav-inner">
-        <a class="nav-logo" href="#hero">
+        <a class="nav-logo" href="${page === 'home' ? '#hero' : './index.html#hero'}">
           <img src="${data.site.logoPath}" alt="${data.site.shortName} Logo" width="44" height="44">
           <span class="nav-logo-text"><span class="color-l">L</span><span class="color-v">V</span><span class="color-g">G</span><span class="color-o">O</span></span>
         </a>
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <span></span><span></span><span></span>
         </button>
         <nav class="nav-links" aria-label="Main navigation">
-          ${data.nav.map((link) => `<a href="${link.url}">${link.label}</a>`).join('')}
+          ${data.nav.map((link) => `<a href="${page === 'home' ? link.url : './index.html' + link.url}">${link.label}</a>`).join('')}
         </nav>
       </div>
     </header>
@@ -388,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ${data.connect
             .map(
               (item) => `
-            <a class="connect-card" href="${item.url}" ${!item.url.startsWith('mailto:') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
+            <a class="connect-card" href="${item.url}" ${item.external || item.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
               <div class="connect-icon">${item.icon}</div>
               <h3>${item.title}</h3>
               <p>${item.desc}</p>
@@ -425,8 +425,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="footer-charity">
           <p>${data.site.name} is a registered charity in England &amp; Wales · <a href="${data.site.charityUrl}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Charity No. ${data.site.charityNo}</a></p>
           <p style="margin-top: 8px;">
-            <a href="arrangements.html" style="color: inherit; text-decoration: underline;">Arrangements</a> | 
-            <a href="policies.html" style="color: inherit; text-decoration: underline;">Policies</a>
+            <a href="./join-us.html" style="color: inherit; text-decoration: underline;">Join Us</a> | 
+            <a href="./arrangements.html" style="color: inherit; text-decoration: underline;">Arrangements</a> | 
+            <a href="./policies.html" style="color: inherit; text-decoration: underline;">Policies</a>
           </p>
           <p style="margin-top: 8px;">© <span class="year"></span> ${data.site.name}. All rights reserved.</p>
         </div>
@@ -579,6 +580,25 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!document.querySelector('.site-nav')) {
     document.body.insertAdjacentHTML('afterbegin', renderHeader());
   }
+
+  // Mobile nav toggle
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !isExpanded);
+      toggle.classList.toggle('active');
+      links.classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-links a').forEach((link) => {
+      link.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('active');
+        links.classList.remove('active');
+      });
+    });
+  }
   if (!document.querySelector('.site-footer')) {
     document.body.insertAdjacentHTML('beforeend', renderFooter());
   }
@@ -713,25 +733,6 @@ document.addEventListener('DOMContentLoaded', () => {
       renderMedia() +
       renderFriends() +
       renderConnect();
-
-    // Mobile nav toggle
-    const toggle = document.querySelector('.nav-toggle');
-    const links = document.querySelector('.nav-links');
-    if (toggle && links) {
-      toggle.addEventListener('click', () => {
-        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', !isExpanded);
-        toggle.classList.toggle('active');
-        links.classList.toggle('active');
-      });
-      document.querySelectorAll('.nav-links a').forEach((link) => {
-        link.addEventListener('click', () => {
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.classList.remove('active');
-          links.classList.remove('active');
-        });
-      });
-    }
 
     const expandBtn = document.getElementById('expand-history-btn');
     if (expandBtn) {
