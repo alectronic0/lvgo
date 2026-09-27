@@ -4,9 +4,9 @@ window.CONTENT = {
     shortName: 'LVGO',
     logoPath: 'assets/logo/lvgo-300.png',
     heroLogoPath: 'assets/logo/lvgo-1024.png',
-    charityNo: '1207314',
+    charityNo: '1219140',
     charityUrl:
-      'https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5289529',
+      'https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5289529?_uk_gov_ccew_onereg_charitydetails_web_portlet_CharityDetailsPortlet_organisationNumber=5289529',
     email: 'team@lvgo.co.uk',
     rehearsals: 'Rehearsals every Thursday near Old St / Angel / Barbican',
   },
@@ -61,6 +61,19 @@ window.CONTENT = {
     subtitle:
       'From intimate community venues to the grand stage of Cadogan Hall, we bring the magic of video game soundtracks to life.',
     list: [
+      {
+        title: 'Next-Gen Nostalgia: A Celebration of Anniversaries in Gaming',
+        poster: 'assets/concerts/next-gen-nostalgia.webp',
+        isLandscape: true,
+        status: 'upcoming',
+        badge: 'November 2026',
+        desc: '2026 is a year of historic gaming anniversaries, and the LVGO invites you to celebrate with us! Classic tunes from your favourite video games celebrating a milestone, played live by a full 60-piece orchestra. Expect gaming visuals, nerdy vibes and pure nostalgia. LVGO invites you to dress up with us! We\'re also looking for a cosplaying host to help with a cosplay parade, photobooth, and general content on the day. If this could be you, please get in touch! Cosplay rules will be posted closer to the event date. Tickets £16 standard, £12 concessions.',
+        date: 'Saturday, 14th November 2026',
+        time: '7:30pm',
+        venue: 'Questors Theatre (Playhouse), Ealing',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Questors+Theatre+Ealing',
+        ticketUrl: 'https://questors.org.uk/event/lvgo-nostalgia/',
+      },
       {
         title: 'Back to the 90s',
         poster: 'assets/concerts/back-to-90s.png',
@@ -220,8 +233,6 @@ window.CONTENT = {
         time: '7pm',
         venue: 'Woolwich Works',
         mapUrl: 'https://www.google.com/maps/search/?api=1&query=Woolwich+Works',
-        infoUrl:
-          'https://www.woolwich.works/events/london-video-game-orchestra-remastered-now-with-bonus-content',
         programmeUrl: 'assets/programmes/LVGO-Remastered-11.06.2022.pdf',
         soundcloudEmbed:
           '<iframe title="SoundCloud Audio Player" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1335809995&color=%23c850c0&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>',
@@ -517,6 +528,13 @@ window.CONTENT = {
   ],
   connect: [
     {
+      title: 'Support Us',
+      icon: '❤️',
+      desc: 'Support us and get exclusive content.',
+      cta: 'Patreon',
+      url: 'https://www.patreon.com/cw/LVGOrchestra',
+    },
+    {
       title: 'Subscribe',
       icon: '📬',
       desc: 'Join our mailing list for priority bookings, exclusive deals, and concert updates.',
@@ -546,6 +564,13 @@ window.CONTENT = {
     },
   ],
   socials: [
+    {
+      name: 'Patreon',
+      url: 'https://www.patreon.com/cw/LVGOrchestra',
+      viewBox: '0 0 24 24',
+      iconPath:
+        'M22.957 7.21c-.004-3.064-2.391-5.576-5.191-6.482-3.478-1.125-8.064-.962-11.384.604C2.357 3.231 1.093 7.391 1.046 11.54c-.039 3.411.302 12.396 5.369 12.46 3.765.047 4.326-4.804 6.068-7.141 1.24-1.662 2.836-2.132 4.801-2.618 3.376-.836 5.678-3.501 5.673-7.031Z',
+    },
     {
       name: 'Linktree',
       url: 'https://linktr.ee/lvgorchestra',
@@ -646,4 +671,58 @@ window.CONTENT = {
       gif: 'https://media.giphy.com/media/xTiTnirVhEfwJIOMYo/giphy.gif',
     },
   ],
+  policies: {
+    title: 'Privacy Policy, Cookie Policy and Terms and Conditions',
+    sections: [
+      {
+        title: 'Privacy Policy',
+        intro: 'This Privacy Policy outlines London Video Game Orchestra ("we", "our" or "the Company") practices with respect to information collected from users who access our website at https://lvgo.co.uk/ ("Site"), or otherwise share personal information with us (collectively: "Users").',
+        items: [
+          { heading: 'Introduction', text: 'The London Video Game Orchestra (LVGO) is committed to protecting your privacy. This policy outlines how we collect, use, disclose, and safeguard your information when you visit our website.' },
+          { heading: 'Information We Collect', text: 'We may collect personal information such as your name, email address, and contact details when you subscribe to our newsletter, purchase tickets, or contact us.' },
+          { heading: 'Use of Information', text: 'We use your information to provide services, communicate updates, manage subscriptions, improve user experience, process transactions, and respond to inquiries.' },
+          { heading: 'Cookies', text: 'We use cookies and similar tracking technologies to enhance the user experience and analyze site traffic. Cookies help us understand how you use our website and provide customized content. You can manage your cookie preferences through your browser settings.' },
+          { heading: 'Data Sharing and Disclosure', text: 'We do not sell or rent your personal data.' },
+          { heading: 'Data Retention', text: 'We retain personal information for as long as necessary to fulfil the purposes outlined in this policy unless a longer retention period is required or permitted by law.' },
+          { heading: 'Your Rights', text: 'You have the right to access, correct, or delete your personal data. You may also object to the processing of your information or request its portability. To exercise these rights, contact us at team@lvgo.co.uk.' },
+          { heading: 'Security', text: 'We implement appropriate technical and organizational measures to protect your data from unauthorized access, alteration, or loss.' },
+          { heading: 'Third-Party Websites', text: 'Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of these sites. We encourage users to read the privacy policies of any linked websites.' },
+          { heading: 'Changes to This Policy', text: 'We may update this Privacy Policy periodically. Any changes will be posted on this page, and, where appropriate, notified to you by email.' },
+          { heading: 'Contact Us', text: 'If you have any questions about this Privacy Policy, please contact us at team@lvgo.co.uk.' },
+        ],
+      },
+      {
+        title: 'Cookie Policy',
+        items: [
+          { heading: 'Introduction', text: 'The London Video Game Orchestra (LVGO) is committed to protecting your privacy. Our website uses only essential cookies necessary for its proper functioning. This policy outlines what cookies are used and how they impact your browsing experience.' },
+          { heading: 'What Are Cookies?', text: 'Cookies are small text files placed on your device when you visit a website. Essential cookies are necessary for basic functionalities such as page navigation and access to secure areas.' },
+          { heading: 'Types of Cookies We Use', text: 'We only use essential cookies that are necessary for the operation of the website. These cookies do not store any personally identifiable information.' },
+          { heading: 'Managing Cookies', text: 'Since we only use essential cookies, there is no need for further user consent. However, you can control and manage cookies through your browser settings if needed.' },
+          { heading: 'Changes to This Policy', text: 'We may update this Cookie Policy periodically. Any changes will be posted on this page.' },
+          { heading: 'Contact Us', text: 'If you have any questions about our use of cookies, please contact us at team@lvgo.co.uk.' },
+        ],
+      },
+      {
+        title: 'Terms and Conditions',
+        items: [
+          { heading: 'Introduction', text: 'Welcome to the London Video Game Orchestra (LVGO) website. By accessing and using our website, you agree to comply with and be bound by these terms and conditions. If you do not agree with any part of these terms, please do not use our website.' },
+          { heading: '1. Use of Website', text: 'The content on this website is provided for general informational purposes only. LVGO reserves the right to modify, suspend, or discontinue any part of the website at any time without notice.' },
+          { heading: '2. Respect for Content Usage', text: 'All content on this website, including text, images, graphics, and videos, is created and curated by the London Video Game Orchestra (LVGO) for informational and educational purposes. While this content is not formally copyrighted, we ask users to respect our efforts and refrain from copying, distributing, modifying, or using any content without prior permission from LVGO. Unauthorised use of the content may result in appropriate action to protect our interests.' },
+          { heading: '3. User Conduct', text: 'By using this website, you agree not to engage in any activity that could harm or disrupt the website’s operation or its users. This includes, but is not limited to, uploading harmful or malicious content, attempting unauthorised access to the website, or engaging in any unlawful activities.' },
+          { heading: '4. Third-Party Links', text: 'Our website may contain links to third-party websites. These links are provided for your convenience, and LVGO does not endorse or take responsibility for the content or practices of these websites. We encourage you to review the terms and conditions and privacy policies of any third-party websites you visit.' },
+          { heading: '5. Limitation of Liability', text: 'LVGO shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising out of or related to your use of this website. All content is provided ‘as is,’ without any warranties or guarantees of accuracy, reliability, or fitness for a particular purpose.' },
+          { heading: '6. Indemnification', text: 'You agree to indemnify, defend, and hold harmless LVGO, its affiliates, partners, and employees from any claims, damages, losses, liabilities, and expenses (including legal fees) arising from your use of the website or violation of these terms.' },
+          { heading: '7. Changes to These Terms', text: 'LVGO reserves the right to update or modify these Terms and Conditions at any time. Any changes will be posted on this page, and continued use of the website constitutes acceptance of the revised terms.' },
+          { heading: '8. Governing Law', text: 'These Terms and Conditions are governed by and construed in accordance with the laws of the United Kingdom. Any disputes arising under these terms shall be subject to the exclusive jurisdiction of the courts of the United Kingdom.' },
+          { heading: 'Contact Us', text: 'If you have any questions about these Terms and Conditions, please contact us at team@lvgo.co.uk.' },
+        ],
+      },
+    ],
+    closing: [
+      'We understand the importance of protecting children’s privacy, especially in an online environment. The Site is not designed for or directed at children. Under no circumstances shall we allow use of our services by minors without prior consent or authorization by a parent or legal guardian. We do not knowingly collect Personal Information from minors. If a parent or guardian becomes aware that his or her child has provided us with Personal Information without their consent, he or she should contact us at team@lvgo.co.uk.',
+      'If you have any general questions about the Site or the information we collect about you and how we use it, you can contact us at team@lvgo.co.uk.',
+    ],
+    address: '167–169 Great Portland Street, 5th Floor, London, W1W 5PF, United Kingdom',
+    lastModified: '15/09/2024',
+  },
 };

@@ -3,7 +3,7 @@
 Official static website for the **London Video Game Orchestra** — a community orchestra dedicated to bringing the music of video games to life across London and beyond.
 
 🔗 **Live Website**: [lvgo.co.uk](https://lvgo.co.uk/)
-🏛️ **Registered Charity No.** 1207314 (England & Wales)
+🏛️ **Registered Charity No.** 1219140 (England & Wales)
 
 ---
 

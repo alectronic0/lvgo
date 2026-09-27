@@ -434,18 +434,48 @@ document.addEventListener('DOMContentLoaded', () => {
     </footer>
   `;
 
-  const renderPolicies = () => `
+  const linkifyEmail = (text) =>
+    text.replaceAll(
+      data.site.email,
+      `<a href="mailto:${data.site.email}" style="color: var(--accent);">${data.site.email}</a>`
+    );
+
+  const renderPolicies = () => {
+    const policies = data.policies;
+
+    return `
     <section class="container" style="padding-top: 100px; padding-bottom: 40px; max-width: 800px;">
       <h1 class="section-title">Policies & Legal</h1>
       <div class="title-underline"></div>
-      
+
       <div style="color: var(--text-muted); line-height: 1.8;">
-        <h2>Privacy Policy, Cookie Policy & Terms and Conditions</h2>
-        <p>For our full Privacy Policy, Cookie Policy, and Terms & Conditions, please contact us directly at <a href="mailto:${data.site.email}" style="color: var(--accent);">${data.site.email}</a>.</p>
-        <p>The London Video Game Orchestra is committed to protecting your privacy and ensuring your data is handled securely and transparently in accordance with GDPR guidelines.</p>
+        <h2>${policies.title}</h2>
+        ${policies.sections
+          .map(
+            (section) => `
+          <h2 style="color: var(--white); margin-top: 40px;">${section.title}</h2>
+          ${section.intro ? `<p>${section.intro}</p>` : ''}
+          ${section.items
+            .map(
+              (item) => `
+            <h3 style="color: var(--white); margin-top: 24px;">${item.heading}</h3>
+            <p>${linkifyEmail(item.text)}</p>
+          `
+            )
+            .join('')}
+        `
+          )
+          .join('')}
+
+        <div style="margin-top: 40px;">
+          ${policies.closing.map((text) => `<p>${linkifyEmail(text)}</p>`).join('')}
+          <p><strong>${data.site.name}</strong><br>Registered Address: ${policies.address}</p>
+          <p><em>Last Modified ${policies.lastModified}</em></p>
+        </div>
       </div>
     </section>
   `;
+  };
 
   const renderArrangements = () => `
     <section class="container" style="padding-top: 100px; padding-bottom: 40px; max-width: 800px;">

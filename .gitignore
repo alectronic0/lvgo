@@ -6,3 +6,5 @@ node_modules/
 dist/
 
 .lighthouseci/
+# Lighthouse temp profiles leaked by WSL→Windows Chrome runs
+C:*/

@@ -22,6 +22,7 @@ RewriteRule ^policies/?$ /policies.html [R=301,L]
 RewriteRule ^join-us/?$ /join-us.html [R=301,L]
 RewriteRule ^arrangements/?$ /arrangements.html [R=301,L]
 RewriteRule ^members/?$ /#connect [R=301,NE,L]
+RewriteRule ^members-email-re-signup/?$ /#connect [R=301,NE,L]
 RewriteRule ^store/?$ /#concerts [R=301,NE,L]
 
 # ----------------------------------------------------------------------
