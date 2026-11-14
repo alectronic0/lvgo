@@ -88,9 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
               !hasUpcoming
                 ? `
               <div class="concert-cta">
-                <h3>No upcoming concerts at the moment!</h3>
-                <p>Join our mailing list to be the first to hear about future performances.</p>
-                <a class="btn btn-primary" href="${data.hero.actions.find((a) => a.label.includes('Join Mailing List')).url}" target="_blank" rel="noopener noreferrer">Subscribe for updates</a>
+                <h3>${data.concerts.comingSoon.title}</h3>
+                <p>${data.concerts.comingSoon.desc}</p>
+                <a class="btn btn-primary" href="${data.hero.actions.find((a) => a.label.includes('Join Mailing List')).url}" target="_blank" rel="noopener noreferrer">${data.concerts.comingSoon.buttonLabel}</a>
               </div>
             `
                 : ''

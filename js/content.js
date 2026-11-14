@@ -60,6 +60,11 @@ window.CONTENT = {
   concerts: {
     subtitle:
       'From intimate community venues to the grand stage of Cadogan Hall, we bring the magic of video game soundtracks to life.',
+    comingSoon: {
+      title: 'Coming Soon',
+      desc: 'Click below to subscribe to our mailing list for details on our next event.',
+      buttonLabel: 'Subscribe for updates',
+    },
     list: [
       {
         title: 'Next-Gen Nostalgia: A Celebration of Anniversaries in Gaming',
